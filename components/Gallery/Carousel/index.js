@@ -10,12 +10,12 @@ function Slider({ src, data, id }) {
       {data?.map((item , idx) => {
         return (
           <Carousel.Item key={idx}>
-            <Card sx={{backgroundColor: '#111'}}>
+            <div style={{display: 'flex', alignItems: 'center',justifyContent: 'center', height: '80vh', width: '80vw'}}>
               <img
-                  className="Media"
+                  className="Media d-block"
                   src={item.src}
               />
-            </Card> 
+            </div>
           </Carousel.Item>
         )
       })}

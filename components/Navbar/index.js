@@ -52,11 +52,12 @@ export default function Navbar({ setSrc, setError }) {
             <Typography variant="h1" component="div" sx={{ flexGrow: 1, fontSize: small ? '18px' : '25px', color: '#080808' }}>
                 PhotoBucket
             </Typography>
-            <label htmlFor="icon-button-file">
+            <label htmlFor="icon-button-file" className="brand-logo">
                 <Input onChange={uploadImg} accept="image/*" id="icon-button-file" type="file" />
                 <IconButton color="primary" aria-label="upload picture" component="span" sx={{position: 'relative'}}>
                     <Box width={70} height={70}>
                       <Image src={'/upload-logo.png'} width='70' height='70' layout="responsive" alt='Brand Logo' />
+                      <img src={'/plus-logo.png'} className="animate-icon" alt='Plus Logo' />
                     </Box>
                 </IconButton>
             </label>

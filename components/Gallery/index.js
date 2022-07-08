@@ -86,27 +86,32 @@ export default function Gallery({ error, src }) {
         aria-describedby="transition-modal-description"
       >
         <Box sx={style}>
-          <Box onClick={handleClose} sx={{position: 'absolute', top: '5%', right: '5%', color: '#FFF', cursor: 'pointer'}} >
+          <Box onClick={handleClose} sx={{position: 'absolute', top: '3%', right: '3%', color: '#FFF', cursor: 'pointer'}} >
             <CloseIcon />
           </Box>
           <Carousel data={itemData} src={img.src} id={img.id} />
         </Box>
       </Modal>
-      <ImageList variant="masonry" cols={extraSmall ? 2 : small ? 2 : medium ? 3 : 4} gap={0} sx={{overflowX: 'hidden', ml: 'auto', mr: 'auto', wrap: 'no-wrap'}}>
+      <ImageList variant="masonry" cols={extraSmall ? 2 : small ? 2 : medium ? 3 : 4} gap={4} sx={{overflowX: 'hidden', ml: 'auto', mr: 'auto', wrap: 'nowrap'}}>
         {itemData?.map((item, idx) => {
           return (
-            <motion.div whileHover={{opacity: 0.7}} layout="position" key={idx}>
+            <motion.div whileHover={{opacity: 0.7}} layout="position"   
+              transition={{
+                layout: {
+                  duration: 1.5,
+                },
+              }} key={idx}>
                 <ImageListItem 
                   onClick={() => imgClick(idx, item.src)} 
                   key={item.img} 
                   sx={{
                     cursor: 'pointer', 
                     marginBottom: '10px !important',
-                    // ml: '3px'
+                    ml: '3px'
                   }}
                 >
                   <img 
-                    style={{marginLeft: '3px'}}
+                    // style={{marginLeft: '3px'}}
                     src={item.src}
                     loading="lazy"
                     alt="mountains"
