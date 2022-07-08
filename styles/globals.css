@@ -46,14 +46,14 @@ a {
   position: fixed;
   top: 50%;
   left: 10%;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -50%);
 }
 
 .carousel-control-next-icon {
   position: fixed;
   top: 50%;
-  right: 3%;
-  transform: translate(-50%, -50%);
+  right: 10%;
+  transform: translate(0, -50%);
 }
 
 .animate-icon {
