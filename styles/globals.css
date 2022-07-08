@@ -14,3 +14,50 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.Media{
+  background-color:#fff;
+  height:auto;
+  overflow:hidden;
+  position:relative;
+  transition:.3s;
+  cursor:pointer;
+  max-height: 480px;
+}
+
+.Media:hover{
+  -webkit-filter:brightness(115%);
+  filter:brightness(115%)
+}
+
+.carousel-control-prev-icon {
+  position: absolute;
+  color: #fff !important;
+  left: -100px;
+}
+
+.carousel-control-next-icon {
+  position: absolute;
+  color: #fff !important;
+  right: -100px;
+}
+
+@media screen and (max-width: 650px) {
+  .carousel-control-prev-icon {
+    left: -50px;
+  }
+
+  .carousel-control-next-icon {
+    right: -50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-control-next-icon {
+    position: static;
+  }
+
+  .carousel-control-prev-icon {
+    position: static;
+  }
+}
