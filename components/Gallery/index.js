@@ -98,7 +98,7 @@ export default function Gallery({ error, src }) {
       <ImageList variant="masonry" cols={extraSmall ? 2 : small ? 2 : medium ? 3 : 4} gap={0} sx={{overflowX: 'hidden', ml: 'auto', mr: 'auto', wrap: 'no-wrap'}}>
         {itemData?.map((item, idx) => {
           return (
-            <motion.div whileHover={{opacity: 0.7}} layout="position">
+            <motion.div whileHover={{opacity: 0.7}} layout="position" key={idx}>
                 <ImageListItem 
                   onClick={() => imgClick(idx, item.src)} 
                   key={item.img} 
