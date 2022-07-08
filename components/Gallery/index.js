@@ -52,31 +52,28 @@ export default function Gallery({ error, src }) {
 
   const [itemData, setItemData] = React.useState([
     {
-      src: '/images/img-1.jpg'
+      src: '/img-1.jpg'
     },
     {
-      src: '/images/img-2.jpg'
+      src: '/img-2.jpg'
     },
     {
-      src: '/images/img-1.jpg'
+      src: '/img-1.jpg'
     },
     {
-      src: '/images/img-3.jpg'
+      src: '/img-3.jpg'
     },
     {
-      src: '/images/img-3.jpg'
-    },
-    // {
-    //   src: '/images/img-4.jpg'
-    // },
-    {
-      src: '/images/img-1.jpg'
+      src: '/img-3.jpg'
     },
     {
-      src: '/images/img-2.jpg'
+      src: '/img-1.jpg'
     },
     {
-      src: '/images/img-1.jpg'
+      src: '/img-2.jpg'
+    },
+    {
+      src: '/img-1.jpg'
     },
   ])
   
