@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,29 +8,31 @@ import { styled } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
+import Styles from "../../styles/Navbar.module.css";
+//import update hook
+import AppContext from "../../context/AppContext";
 
 const Input = styled('input')({
     display: 'none',
 });
 
-export default function Navbar({ setSrc, setError }) {
+const Navbar = () => {
 
   const theme = useTheme();
-  const extraSmall = useMediaQuery(theme.breakpoints.down('xs'));
   const small = useMediaQuery(theme.breakpoints.down('sm'));
-  const medium = useMediaQuery(theme.breakpoints.down('md'));
-
   const types = ["image/png", "image/jpg", "image/jpeg"]
+
+  //destructure hook and use set Image
+  const { image, setImage } = useContext(AppContext);
 
   const uploadImg = (e) => {
     const selected = e.target.files[0];
-    console.log(selected);
     if(selected && types.includes(selected.type)) {
-      setSrc(URL.createObjectURL(selected));
-      setError(false);
+      //updating image src in context hook
+      setImage(URL.createObjectURL(selected))
     } else {
-      setSrc(null);
-      setError(true);
+      //if no image selected set to null
+      setImage(null)
     }
   }
 
@@ -52,12 +54,12 @@ export default function Navbar({ setSrc, setError }) {
             <Typography variant="h1" component="div" sx={{ flexGrow: 1, fontSize: small ? '18px' : '25px', color: '#080808' }}>
                 PhotoBucket
             </Typography>
-            <label htmlFor="icon-button-file" className="brand-logo">
+            <label htmlFor="icon-button-file" className={Styles.brand_logo}>
                 <Input onChange={uploadImg} accept="image/*" id="icon-button-file" type="file" />
                 <IconButton color="primary" aria-label="upload picture" component="span" sx={{position: 'relative'}}>
                     <Box width={70} height={70}>
                       <Image src={'/upload-logo.png'} width='70' height='70' layout="responsive" alt='Brand Logo' />
-                      <img src={'/plus-logo.png'} className="animate-icon" alt='Plus Logo' />
+                      <img src={'/plus-logo.png'} className={Styles.animate_icon} alt='Plus Logo' />
                     </Box>
                 </IconButton>
             </label>
@@ -66,3 +68,5 @@ export default function Navbar({ setSrc, setError }) {
     </Box>
   );
 }
+
+export default Navbar;

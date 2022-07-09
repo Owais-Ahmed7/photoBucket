@@ -1,0 +1,13 @@
+.animate_icon {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: 13%;
+    right: 8%;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+  
+.brand_logo:hover .animate_icon {
+    transform: rotate(-180deg);
+}

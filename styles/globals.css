@@ -15,25 +15,6 @@ a {
   box-sizing: border-box;
 }
 
-.Media{
-  background-color:#fff;
-  height:auto;
-  overflow:hidden;
-  position:relative;
-  transition:.3s;
-  cursor:pointer;
-  max-height: 80vh;
-}
-
-.w-100 {
-  width: auto !important;
-} 
-
-.Media:hover{
-  -webkit-filter:brightness(115%);
-  filter:brightness(115%)
-}
-
 .carousel-control-prev {
   position: relative;
 }
@@ -54,18 +35,4 @@ a {
   top: 50%;
   right: 10%;
   transform: translate(0, -50%);
-}
-
-.animate-icon {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  bottom: 13%;
-  right: 8%;
-  border-radius: 50%;
-  transition: 0.5s;
-}
-
-.brand-logo:hover .animate-icon {
-  transform: rotate(-180deg);
 }

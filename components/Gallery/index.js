@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Carousel from "./Carousel/index";
+import Slider from "./Slider/index";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import CloseIcon from '@mui/icons-material/Close';
+import AppContext from "../../context/AppContext";
 
 const style = {
   position: 'absolute',
@@ -25,8 +26,11 @@ const style = {
   p: 4,
 };
 
-export default function Gallery({ error, src }) {
+export default function Gallery() {
 
+  //getting image source from context hook
+  const { image, setImage } = useContext(AppContext);
+  
   const theme = useTheme();
   const extraSmall = useMediaQuery(theme.breakpoints.down('xs'));
   const small = useMediaQuery(theme.breakpoints.down('sm'));
@@ -37,19 +41,21 @@ export default function Gallery({ error, src }) {
     src: null,
     id: null
   })
-  const handleClose = () => setOpen(false);
 
+  const handleClose = () => setOpen(false);
   function imgClick(idx, imgSrc) {
     setImg({...img, src: imgSrc, id: idx});
     setOpen(true);
   }
   
   React.useEffect(() => {
-    if(src) {
-      setItemData([{ src: src }, ...itemData])
+    //pushing new image source to images array
+    if(image) {
+      setItemData([{ src: image }, ...itemData])
     }
-  }, [src])
+  }, [image])
 
+  //images array later will be replaced from database image serving
   const [itemData, setItemData] = React.useState([
     {
       src: '/img-1.jpg'
@@ -78,7 +84,7 @@ export default function Gallery({ error, src }) {
   ])
   
   return (
-    <Box sx={{p: 2, pt: 4, textAlign: 'center'}}>
+    <Box sx={{ p: 2, pt: 4, mt: '2rem !important', m: 2,  textAlign: 'center', bgcolor: '#EDEDED' }}>
       <Modal
         open={open}
         onClose={handleClose}
@@ -89,29 +95,31 @@ export default function Gallery({ error, src }) {
           <Box onClick={handleClose} sx={{position: 'absolute', top: '3%', right: '3%', color: '#FFF', cursor: 'pointer'}} >
             <CloseIcon />
           </Box>
-          <Carousel data={itemData} src={img.src} id={img.id} />
+          <Slider data={itemData} src={img.src} id={img.id} />
         </Box>
       </Modal>
       <ImageList variant="masonry" cols={extraSmall ? 2 : small ? 2 : medium ? 3 : 4} gap={4} sx={{overflowX: 'hidden', ml: 'auto', mr: 'auto', wrap: 'nowrap'}}>
         {itemData?.map((item, idx) => {
           return (
-            <motion.div whileHover={{opacity: 0.7}} layout="position"   
+            <motion.div 
+              whileHover={{opacity: 0.7}} 
+              layout="position"   
               transition={{
                 layout: {
                   duration: 1.5,
                 },
-              }} key={idx}>
+              }} 
+              key={idx}
+            >
                 <ImageListItem 
-                  onClick={() => imgClick(idx, item.src)} 
-                  key={item.img} 
+                  onClick={() => imgClick(idx, item.src)}
                   sx={{
                     cursor: 'pointer', 
                     marginBottom: '10px !important',
                     ml: '3px'
                   }}
                 >
-                  <img 
-                    // style={{marginLeft: '3px'}}
+                  <img
                     src={item.src}
                     loading="lazy"
                     alt="mountains"

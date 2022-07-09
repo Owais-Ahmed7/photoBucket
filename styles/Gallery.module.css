@@ -1,0 +1,26 @@
+.img_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    height: 80vh;
+    width: 80vw
+}
+
+.Media{
+    background-color:#fff;
+    height:auto;
+    overflow:hidden;
+    position:relative;
+    transition:.3s;
+    cursor:pointer;
+    max-height: 80vh;
+  }
+  
+.w_100 {
+  width: auto !important;
+} 
+  
+.Media:hover{
+  -webkit-filter:brightness(120%);
+  filter:brightness(120%)
+}
